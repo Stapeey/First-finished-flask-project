@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Home{%endblock%}
+
+{%block menu %}
+<a href="/DELLOCALDB" class="nav-item nav-link" id="del">Delete Notes</a>
+{%endblock%}
+
+{% block Style%} 
+
+<style>
+    h3{
+        margin-bottom: 0;
+        font-size: x-large;
+    }
+    p{
+        font-size: x-small
+    }
+    .note{
+        border: 0.2vw solid black;
+        margin-bottom: 0.6vw;
+        overflow-wrap: break-word
+    }
+</style>
+
+{%endblock%}
+
+{% block content %}
+
+<div stlye="width:viewport; height:50vh; background-color:blue;">
+    <h1>These are your notes</h1>
+</div>
+
+{%endblock%}
+
+{%block Note%}
+
+<div style="width: 100%; height: 50vh; display:flex; justify-content: center; align-items: center;"> 
+    <div style="width: 95%; height:43vh;">
+        {% set finalloads = updater() %}
+        {% if not finalloads%}
+            {{pass}}
+        {%else%}
+            {%for i, j in finalloads%}
+            <div class="note" style="background-color: gray;"><h3>{{i}}</h3><p>{{j}}</p></div>
+            {% endfor %}
+        {%endif%}
+        <form method="post">
+            <div style="display:flex;align-items: center;">
+                <textarea id="latest" name="note" style="width:91%;height:9vh;" type="text" placeholder="Enter notes here."></textarea>
+            <button style="width:8%;height:6vh;margin-left:1.5%">Send</button>
+            
+            </div>
+        </form>
+        
+    </div>
+</div>
+
+{%endblock%}
