@@ -17,7 +17,7 @@ def updater():
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'kurvaanyad' #ez fontos cookieknál
+    app.config['SECRET_KEY'] = 'randomblabla' #ez fontos cookieknál
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + DB_NAME
     db.init_app(app)
 
